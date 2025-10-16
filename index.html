@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>МГ - Марко Гејминг</title>
+
+    <!-- Google Site Verification -->
+    <meta name="google-site-verification" content="ТВОЈОТ-КОД-ОД-GOOGLE" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>МГ</h1>
+            <nav>
+                <a href="https://www.youtube.com/@mgyt23-yt" target="_blank">YouTube</a>
+                <a href="https://www.instagram.com/markogamingmg/" target="_blank">Instagram</a>
+                <a href="#contact">Контакт</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="main">
+        <div class="container">
+            <h2>Добредојде на МГ каналот</h2>
+            <p>Тука ќе најдеш гејминг содржини, моменти и добра забава!</p>
+        </div>
+    </section>
+
+    <section id="videos">
+        <div class="container">
+            <h2>Видео Галерија</h2>
+            <div class="video-grid">
+                <iframe src="https://www.youtube.com/embed/ВидеоID1" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/ВидеоID2" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/ВидеоID3" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <div class="container">
+            <h2>Слика Галерија</h2>
+            <div class="image-grid">
+                <a href="https://www.youtube.com/@mgyt23-yt" target="_blank"><img src="slika1.jpg" alt="Slika 1"></a>
+                <a href="https://www.instagram.com/markogamingmg/" target="_blank"><img src="slika2.jpg" alt="Slika 2"></a>
+                <a href="https://www.youtube.com/@mgyt23-yt" target="_blank"><img src="slika3.jpg" alt="Slika 3"></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Контакт</h2>
+            <form id="contact-form" action="https://getform.io/f/bzygegwa" method="POST">
+                <input type="text" name="name" placeholder="Вашето име" required>
+                <input type="email" name="email" placeholder="Вашиот емаил" required>
+                <textarea name="message" placeholder="Вашата порака" rows="5" required></textarea>
+                <button type="submit">Прати порака</button>
+                <p id="form-message"></p>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            &copy; 2025 МГ - Марко Гејминг
+        </div>
+    </footer>
+
+    <script>
+    document.getElementById('contact-form').addEventListener('submit', function(e){
+        e.preventDefault();
+        const form = e.target;
+        const data = new FormData(form);
+        fetch(form.action, {
+            method: 'POST',
+            body: data,
+            headers: { 'Accept': 'application/json' }
+        })
+        .then(res => {
+            if(res.ok){
+                document.getElementById('form-message').innerText = "✅ Пораката е пратена успешно!";
+                form.reset();
+            } else {
+                document.getElementById('form-message').innerText = "❌ Грешка! Обиди се повторно.";
+            }
+        })
+        .catch(err => {
+            document.getElementById('form-message').innerText = "❌ Грешка! Обиди се повторно.";
+            console.log(err);
+        });
+    });
+    </script>
+</body>
+</html>
